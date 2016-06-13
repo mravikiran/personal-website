@@ -1,0 +1,146 @@
+md-sidenav, md-sidenav.md-locked-open, md-sidenav.md-closed.md-locked-open-add-active {
+ min-width: 200px !important;
+ width: 50vw !important;
+ max-width: 200px !important;
+}
+
+
+.md-sidenav-backdrop {
+    opacity: 0 !important;
+}
+
+
+md-sidenav.md-closed-add,
+md-sidenav.md-closed-remove,
+md-sidenav.md-closed-add.md-closed-add-active, 
+md-sidenav.md-closed-remove.md-closed-remove-active,
+md-sidenav.md-locked-open-remove-active,
+md-sidenav.md-closed.md-locked-open-add-active
+
+{
+    -webkit-transition: none !important;
+    transition: none !important;
+}
+
+.main-toolbar {
+  /* Put top toolbar on a higher layer than sidenav, which has z-index: 60 */
+  
+  z-index: 61;
+  /* ..Not really needed unless you want the menu
+     to be overlapped by the top bar, which it is
+     not currently, thanks to "display: block" and            "position: relative" */
+  /* Cosmetic */
+ }
+
+ .flat-btn-no-border {
+  padding: 0;
+  margin: 0;
+  min-width: 88px;
+  border-radius: 0;
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration:none;
+  border:2px solid rgba(100, 230, 96, 0.96);
+  outline: none;
+
+  color : rgb(49, 46, 46);
+  background-color: rgba(255, 222, 121, 0.96);
+}
+
+
+.slide {
+    position: absolute;
+    top: 65px;
+    width: 100%;
+    height: 100%;
+}
+
+.slide.ng-enter {
+	-webkit-transition: all 1s ease;
+    transition: all 1s ease;
+    left: 100%;
+}
+.slide.ng-enter.ng-enter-active {
+    left: 0;
+}
+.slide.ng-leave {
+	-webkit-transition: all 1s ease;
+	transition: all 1s ease;
+    left: 0;
+}
+.slide.ng-leave.ng-leave-active {
+    left: -100%;
+}
+
+.rotate {
+	position: absolute;
+    top: 65px;
+    left:0;
+    width: 100%;
+    height: 100%;
+    -webkit-animation-duration: 1s;
+}
+.ng-leave.rotate {
+    -webkit-animation-name: rotate-leave;
+}
+.ng-enter.rotate {
+    -webkit-animation-name: rotate-enter;
+}
+@-webkit-keyframes rotate-leave {
+    0% {
+        -webkit-transform-origin: center center;
+        -webkit-transform: rotate(0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform-origin: center center;
+        -webkit-transform: rotate(-180deg);
+        opacity: 0;
+    }
+}
+@-webkit-keyframes rotate-enter {
+    0% {
+        -webkit-transform-origin: center center;
+        -webkit-transform: rotate(-180deg);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform-origin: center center;
+        -webkit-transform: rotate(-360deg);
+        opacity: 1;
+    }
+}
+
+
+.fade {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    opacity: 1;
+}
+.fade.ng-enter,
+.fade.ng-leave {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.fade.ng-enter {
+    opacity: 0;
+    left: 100%;
+
+}
+.fade.ng-enter-active {
+    opacity: 1;
+    left: 0;
+
+}
+.fade.ng-leave {
+    opacity: 1;
+    left: 0;
+
+}
+.fade.ng-leave-active {
+    opacity: 0;
+    left: -100%;
+
+}
