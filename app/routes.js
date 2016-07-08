@@ -41,10 +41,16 @@ module.exports = function(app, passport) {
     } );
     */
 
-	app.get('/api/candidates', 
+	app.get('/api/candidates', auth,
 			function(req, res) 
 			{
-				Candidate.find({},function(err, candidates) 
+                if(!req.payload._id){
+                    //user not logged in
+                    console.log(req);
+                    res.status(401).json({"message" : "no  user logged in from candidates"});
+                }
+                else {
+				    Candidate.find({"name" : "Gouthami Nelavelli"},function(err, candidates) 
 								{
 									if(err) 
 									{
@@ -54,7 +60,8 @@ module.exports = function(app, passport) {
                                     console.log(candidates);
                                     res.json(candidates);
 								}
-							)
+							);
+                }
 			}
 		);
 
@@ -63,7 +70,6 @@ module.exports = function(app, passport) {
                                 passport.authenticate( 'local-login', 
                                     function(err, user, info) 
                                     {
-                                        console.log("Getting into authenticate callback");
                                             var token;
 
                                             if(err) 
@@ -93,7 +99,6 @@ module.exports = function(app, passport) {
                                 passport.authenticate( 'local-signup', 
                                     function(err, user, info) 
                                     {
-                                        console.log("Getting into authenticate callback");
                                             var token;
 
                                             if(err) 

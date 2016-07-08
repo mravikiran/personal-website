@@ -21,7 +21,8 @@ var degreeSchema = { degree :  {
 var candidateSchema = new Schema({
                                 name : { type : String, default:''},
                                 gender : String,
-                                education : [degreeSchema]
+                                education : [degreeSchema],
+                                summary : [String]
                         }
         );
 

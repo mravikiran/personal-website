@@ -29,12 +29,10 @@ module.exports = function(passport) {
                             passReqToCallback : true
                         },
                         function(req, email, password, done) {
-                                console.log("Verify Callback");                                                                                                   
 
                             process.nextTick( function(){
                             
 
-                                console.log("Next Ticking");                                                                        
                                 User.findOne({'email':email}, function(err, user){
 
                                     if(err)
