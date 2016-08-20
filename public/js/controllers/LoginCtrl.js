@@ -19,7 +19,7 @@ angular
         .login($scope.credentials)
         .then(function(response){
             authenticationService.saveToken(response.data.token);
-            $location.path('/candidates');
+            $location.path('/');
         }, function(error){
             console.log(JSON.stringify(error));
             $scope.credentials.name = "";

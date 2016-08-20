@@ -1,10 +1,61 @@
 <!-- public/views/candidate.html -->
 
-<div class="jumbotron text-center">
-    <h1>Candidate and whatever</h1>
+    <!--<h1>Candidate and whatever</h1>
 
     <p>{{ tagline }}</p>
     <h1 ng-repeat='can in candidates'>
     {{ can.name }}
-    </h1>
+    </h1>-->
+
+<div layout="column">
+      <md-content  class="md-padding no-outline" ng-cloak >
+        <md-toolbar  class="md-warn md-hue-6" ng-click="open = !open" >
+          <div flex class="md-toolbar-tools">
+           <!-- <md-button ng-click="open = !open">
+              Toggle
+            </md-button> -->
+            <span flex> What are you talking</span>
+          </div>
+        </md-toolbar>
+        <!-- <div class="toggle-content" ng-show="open">
+          The toggled content!
+        </div> -->
+
+        <md-content  class="toggle-content" ng-show="open" ng-cloak>
+        <p>
+            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+            Although i am not sure what content to insert now , but i have to fill it up with something so i can see if the height gets adjusted in case of md-card-content or not.
+        </p>
+        </md-content>
+        </md-content>
+
+
 </div>
+
+<div layout="column">
+      <md-content  class="md-padding no-outline" ng-cloak >
+        <md-toolbar  class="md-accent md-hue-6" ng-click="open1 = !open1" >
+          <div flex class="md-toolbar-tools">
+           <!-- <md-button ng-click="open = !open">
+              Toggle
+            </md-button> -->
+            <span flex> What are you talking</span>
+          </div>
+        </md-toolbar>
+        <!-- <div class="toggle-content" ng-show="open">
+          The toggled content!
+        </div> -->
+
+        <md-content  class="toggle-content" ng-show="open1" ng-cloak>
+        <p>
+            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+            Although i am not sure what content to insert now , but i have to fill it up with something so i can see if the height gets adjusted in case of md-card-content or not.
+        </p>
+        </md-content>
+        </md-content>
+
+
+</div>
+

@@ -23,6 +23,12 @@
         .when('/signup', {
             templateUrl : 'views/signup.html',
             controller : 'SignupController'
+        }).when('/resume', {
+            templateUrl : 'views/resume.html',
+            controller : 'ResumeController'
+        }).when('/createstories', {
+            templateUrl : 'views/createstories.html',
+            controller : 'StoryController'
         })
         
         ;

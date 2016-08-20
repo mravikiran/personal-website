@@ -32,85 +32,110 @@
 
     <!-- ANGULAR CUSTOM -->
     <script src="js/services/CandidateServices.js"></script>      
-    <script src="js/services/AuthenticationServices.js"></script>          
+    <script src="js/services/AuthenticationServices.js"></script>  
+    <script src="js/services/ResumeServices.js"></script>
+    <script src="js/services/StoryServices.js"></script>                    
     <script src="js/controllers/MainCtrl.js"></script>
     <script src="js/controllers/CandidateCtrl.js"></script>
     <script src="js/controllers/LoginCtrl.js"></script>
     <script src="js/controllers/SignupCtrl.js"></script>
     <script src="js/controllers/SidenavCtrl.js"></script>
+    <script src="js/controllers/ResumeCtrl.js"></script>
+    <script src="js/controllers/StoryCtrl.js"></script>
     <script src="js/directives/AuthenticateDirective.js"></script>
     <script src="js/directives/controllers/AuthenticateCtrl.js"></script>
     <script src="js/appRoutes.js"></script>
     <script src="js/app.js"></script>
 </head>
 <body ng-app="sampleApp"  flex>
-<div class="container" style="width:100%">
+    <div class="container" style="width:100%" flex>
 
-<div layout="row" flex ng-controller="SidenavController" style="height:100%">
-    <!-- side Nav -->
-    <md-sidenav
-                class="md-sidenav-left"
-                md-component-id="left"
-                md-is-locked-open="isLockedOpen"
-                md-disable-backdrop
-                md-whiteframe="2">
-                <div layout="column">
-                    <md-button class="flat-btn-no-border">
-                        Resume
-                    </md-button>
-                    <md-button class="flat-btn-no-border">
-                        Create Stories
-                    </md-button>
-                    <md-button class="flat-btn-no-border">
-                        Info on cards
-                    </md-button>
-                    <md-button class="flat-btn-no-border">
-                        Musings
-                    </md-button>
-                    <md-button class="flat-btn-no-border">
-                        Pictures
-                    </md-button>
-                    <md-button class="flat-btn-no-border">
-                        Write to me!
-                    </md-button>
+         <div layout="row" flex ng-controller="SidenavController" authenticate>
+                <!-- side Nav -->
+                <md-sidenav layout="column"
+                            class="md-sidenav-left"
+                            md-component-id="left"
+                            md-is-locked-open="isLockedOpen"
+                            md-disable-backdrop
+                            md-whiteframe="2"
+                            flex >
+                                <md-button class="flat-btn-no-border md-accent md-hue-2" ng-click="resumeMenuOpen = !resumeMenuOpen">
+                                        Resume
+                                </md-button>
+                                <div layout="column" class="toggle-content" ng-show="resumeMenuOpen">
+                                    <md-list flex>
+                                        <md-list-item class="md-1-line" >
+                                                <h4>                    
+                                                        <a href="/resume?name=Ravi Kiran Mikkilineni">
+                                                        Ravi
+                                                        </a>
+                                                </h4>
+                                        </md-list-item>
+                                        <md-list-item class="md-1-line" >
+                                                <h4>                    
+                                                        <a href="/resume?name=Gouthami Nelavelli">
+                                                        Gouthami
+                                                        </a>
+                                                </h4>
+                                        </md-list-item>
+
+                                    </md-list>
+                                </div>
+                                <md-button class="flat-btn-no-border md-accent md-hue-2">
+                                    <a href="/createstories">
+                                    Create Stories
+                                    </a>
+                                </md-button>
+                                <md-button class="flat-btn-no-border md-accent md-hue-2">
+                                    Info on cards
+                                </md-button>
+                                <md-button class="flat-btn-no-border md-primary md-hue-2">
+                                    Musings
+                                </md-button>
+                                <md-button class="flat-btn-no-border">
+                                    Pictures
+                                </md-button>
+                                <md-button class="flat-btn-no-border" ng-click="logout()">
+                                    Bye-bye!
+                                </md-button>
+                </md-sidenav>
+
+                <div layout="column" flex  >
+                    <md-toolbar class="md-accent md-hue-4">
+                      <div class="md-toolbar-tools">
+                        <md-button class="md-icon-button" aria-label="Options" ng-click="toggle()" ng-show="authctrl.isLoggedIn">
+                            <md-icon md-font-library="material-icons">menu</md-icon>                
+                        </md-button>
+                        <h2>
+                          <span ng-show="!authctrl.isLoggedIn">Your mind is about to be blown away!!</span>
+                          <span ng-show="authctrl.isLoggedIn">Welcome {{ authctrl.currentUser.name }}</span>
+
+                        </h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" aria-label="Favorite" ng-click="toggleNgView()" ng-show="authctrl.isLoggedIn">
+                            <md-icon md-font-library="material-icons">favorite</md-icon>                
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="More" >
+                            <md-icon md-font-library="material-icons"><a href="/login">more_vert</a></md-icon>                
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="More" >
+                            <md-icon md-font-library="material-icons"><a href="/signup">account_circle</a></md-icon>                
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="More" ng-show="authctrl.isLoggedIn">
+                            <md-icon md-font-library="material-icons"><a href="/">android</a></md-icon>                
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="More" ng-show="authctrl.isLoggedIn">
+                            <md-icon md-font-library="material-icons"><a href="/candidates">face</a></md-icon>                
+                        </md-button>
+                      </div>
+                    </md-toolbar>
+                    <div ng-view class="slide-left" flex></div>
                 </div>
-    </md-sidenav>
 
-    <div layout="column" flex authenticate>
-        <md-toolbar class="md-accent md-hue-6">
-          <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" aria-label="Options" ng-click="toggle()" ng-show="authctrl.isLoggedIn">
-                <md-icon md-font-library="material-icons">menu</md-icon>                
-            </md-button>
-            <h2>
-              <span ng-show="!authctrl.isLoggedIn">Your mind is about to be blown away!!</span>
-              <span ng-show="authctrl.isLoggedIn">Welcome {{ authctrl.currentUser.name }}</span>
-
-            </h2>
-            <span flex></span>
-            <md-button class="md-icon-button" aria-label="Favorite" ng-click="toggleNgView()" ng-show="authctrl.isLoggedIn">
-                <md-icon md-font-library="material-icons">favorite</md-icon>                
-            </md-button>
-            <md-button class="md-icon-button" aria-label="More" ng-show="!authctrl.isLoggedIn">
-                <md-icon md-font-library="material-icons"><a href="/login">more_vert</a></md-icon>                
-            </md-button>
-            <md-button class="md-icon-button" aria-label="More" ng-show="!authctrl.isLoggedIn">
-                <md-icon md-font-library="material-icons"><a href="/signup">account_circle</a></md-icon>                
-            </md-button>
-            <md-button class="md-icon-button" aria-label="More" ng-show="authctrl.isLoggedIn">
-                <md-icon md-font-library="material-icons"><a href="/">android</a></md-icon>                
-            </md-button>
-          </div>
-        </md-toolbar>
-        <div layout="row" >
-            <div  ng-view class="slide"></div>
         </div>
+
+
+    <!-- div container -->
     </div>
-
-</div>
-
-
-<!-- div container -->
-</div>
 </body>
 </html>

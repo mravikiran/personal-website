@@ -41,16 +41,18 @@ module.exports = function(app, passport) {
     } );
     */
 
-	app.get('/api/candidates', auth,
+	app.post('/api/candidates', auth,
 			function(req, res) 
 			{
+                var body = req.body;
+                console.log("The request is : " + body["name"]);
                 if(!req.payload._id){
                     //user not logged in
                     console.log(req);
                     res.status(401).json({"message" : "no  user logged in from candidates"});
                 }
                 else {
-				    Candidate.find({"name" : "Gouthami Nelavelli"},function(err, candidates) 
+				    Candidate.find({"name" : body["name"] },function(err, candidates) 
 								{
 									if(err) 
 									{

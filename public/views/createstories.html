@@ -1,0 +1,51 @@
+<!-- public/views/candidate.html -->
+
+    <!--<h1>Candidate and whatever</h1>
+
+    <p>{{ tagline }}</p>
+    <h1 ng-repeat='can in candidates'>
+    {{ can.name }}
+    </h1>-->
+
+<div layout="column">
+  <div layout="row">
+   <md-input-container>
+   <label>Size</label> 
+      <md-select ng-model='storyLength'>
+        <md-option  ng-value='sl' ng-repeat='sl in storyLengths' >
+          {{sl}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container>
+    <label>Level</label> 
+      <md-select ng-model='storyLevel'>
+        <md-option  ng-value='sl.value' ng-repeat='sl in storyLevels' >
+          {{sl.name}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+  <div >
+  
+  <div class='float-left-6' ng-repeat='i in [1,2,3,4,5,6] | limitTo:storyLength'>
+    <md-card   >
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">Image {{i}}</span>
+                  <input type='file'></input>
+                </md-card-title-text>
+                <md-card-title-media>
+                  <div class="md-media-sm card-media">
+                    <img src="" alt="Smiley face" height="100" width="100">
+                    </img>
+                  </div>
+                </md-card-title-media>
+          </md-card-title>
+    </md-card>
+  </div>
+  
+  </div>
+
+</div>
+

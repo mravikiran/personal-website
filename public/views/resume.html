@@ -1,0 +1,85 @@
+<!-- public/views/candidate.html -->
+
+    <!--<h1>Candidate and whatever</h1>
+
+    <p>{{ tagline }}</p>
+    <h1 ng-repeat='can in candidates'>
+    {{ can.name }}
+    </h1>-->
+
+<div layout="column">
+
+<!-- Summary and Objective -->
+  <md-content  class="md-padding no-outline" ng-cloak >
+        <md-toolbar  class="md-warn md-hue-6" ng-click="sumOpen = !sumOpen" >
+          <div flex class="md-toolbar-tools">
+           <!-- <md-button ng-click="open = !open">
+              Toggle
+            </md-button> -->
+            <span flex >Professional Summary</span>
+          </div>
+        </md-toolbar>
+      <md-content  class="toggle-content" ng-show="sumOpen" ng-cloak flex>
+                <md-list class="md-dense" flex> 
+                  <md-list-item ng-repeat = "highlight in ResumeData.summary" flex >
+                      <div layout="row">
+                        <md-icon md-font-library="material-icons no-margin" style="margin:0;">chevron_right</md-icon>                
+                        <p class="md-subhead">{{highlight}}</p>
+                    </div>
+                  </md-list-item>
+                </md-list>
+      </md-content>
+    </md-content>
+
+    </md-divider>
+
+    <!-- Education -->
+      <md-content  class="md-padding no-outline" ng-cloak >
+        <md-toolbar  class="md-warn md-hue-6" ng-click="eduOpen = !eduOpen" >
+          <div flex class="md-toolbar-tools">
+           <!-- <md-button ng-click="open = !open">
+              Toggle
+            </md-button> -->
+            <span flex>Education</span>
+          </div>
+        </md-toolbar>
+      <md-content  class="toggle-content" ng-show="eduOpen" ng-cloak layout="row" flex>
+        <div ng-repeat = "degree in ResumeData.education[0].degrees" flex > <!-- one has to be careful about using hard coded indexes in the code like this -->
+          <div>
+            <md-card md-theme="dark-purple" md-theme-watch>
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">{{degree.name}}, {{degree.major}}</span>
+                  <span class="md-subhead">{{degree.institute}}</span>
+                  <span class="md-subhead">{{degree.end}}</span>
+                  <span class="md-subhead">GPA : {{degree.gpa}}</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                  <div class="md-media-sm card-media"></div>
+                </md-card-title-media>
+              </md-card-title>
+      </md-card>
+          </div>
+        </div>
+        </md-content>
+    </md-content>
+
+    <!-- Professional Experience -->
+
+    <md-content  class="md-padding no-outline" ng-cloak >
+        <md-toolbar  class="md-warn md-hue-6" ng-click="jobsOpen = !jobsOpen" >
+          <div flex class="md-toolbar-tools">
+           <!-- <md-button ng-click="open = !open">
+              Toggle
+            </md-button> -->
+            <span flex>Professional Jobs</span>
+          </div>
+        </md-toolbar>
+      <md-content  class="toggle-content" ng-show="jobsOpen" ng-cloak layout="row" flex>
+        <md-tabs md-dynamic-height md-border-bottom>
+        </md-tabs>      
+      </md-content>
+    </md-content>
+
+</div>
+

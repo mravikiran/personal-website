@@ -1,5 +1,5 @@
 // public/js/controllers/MainCtrl.js
-angular.module('SidenavCtrl', []).controller('SidenavController',[ '$scope','$log','$timeout','$mdSidenav','$mdUtil', function($scope,$log, $timeout, $mdSidenav, $mdUtil) {
+angular.module('SidenavCtrl', []).controller('SidenavController',[ '$scope','$log','$timeout','$mdSidenav','$mdUtil','authenticationService', function($scope,$log, $timeout, $mdSidenav, $mdUtil, authenticationService) {
 
     $scope.buttonText = 'Google';  
     $scope.isLockedOpen = false;
@@ -82,6 +82,11 @@ function buildDelayedToggler(navID) {
     // Async lookup for sidenav instance; will resolve when the instance is available
 $mdSidenav(componentId).then(function(instance) {
   $log.debug( componentId + "is now ready" );
+
+  $scope.logout = function ()
+  {
+    authenticationService.logout()
+  }
 
 });
 // Async toggle the given sidenav;
